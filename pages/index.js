@@ -1,7 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+import { checkout } from "../checkout";
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -15,6 +15,30 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+        <div className={styles.grid}>
+          <div className={styles.card}>
+            <Image src="/images/chatbottest.png" width={620} height={500} />
+            <p>
+              Chatbot helps people in a way that a reader can easily understand
+              the topic by querying the keywords that were fetched from the
+              newspaper or article.
+            </p>
+            <button
+              onClick={() => {
+                checkout({
+                  lineItems: [
+                    {
+                      price: "price_1LmCCSKVLUoxwByRBYgwN5Tp",
+                      quantity: 1,
+                    },
+                  ],
+                });
+              }}
+            >
+              Buy the project
+            </button>
+          </div>
+        </div>
       </main>
 
       <footer className={styles.footer}>
@@ -23,12 +47,12 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
